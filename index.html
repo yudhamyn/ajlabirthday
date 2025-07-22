@@ -134,25 +134,37 @@
   </div>
 
     <!-- Musik Latar -->
-<audio id="bg-music" autoplay muted loop>
-  <source src="najlasong.mp3" type="audio/mpeg">
-  Browser Anda tidak mendukung audio.
-</audio>
+  <!-- AUDIO -->
+  <audio id="bg-music" src="najlasong.mp3" preload="auto" loop></audio>
 
 <script>
-  window.addEventListener('DOMContentLoaded', function() {
-    // Saat pengguna pertama kali klik atau scroll, aktifkan audio
-    const music = document.getElementById('bg-music');
-    const enableAudio = () => {
-      music.muted = false;
-      music.play();
-      document.removeEventListener('click', enableAudio);
-      document.removeEventListener('scroll', enableAudio);
-    };
-    document.addEventListener('click', enableAudio);
-    document.addEventListener('scroll', enableAudio);
+  const music = document.getElementById('bg-music');
+  let lastTap = 0;
+
+  // Mulai musik setelah interaksi pertama
+  const startMusic = () => {
+    music.play().catch(() => {});
+    document.removeEventListener('click', startMusic);
+  };
+  document.addEventListener('click', startMusic);
+
+  // Double tap to pause/play
+  document.addEventListener('touchend', function (e) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+
+    if (tapLength < 300 && tapLength > 0) {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+      e.preventDefault();
+    }
+    lastTap = currentTime;
   });
 </script>
+
 
 
 </body>
