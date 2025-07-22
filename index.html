@@ -44,6 +44,26 @@
       color: white;
       padding: 20px;
     }
+        .rsvp-button {
+      position: absolute;
+      left: 50%;
+      top: 65%; /* Posisi vertikal sesuai area lingkaran hijau */
+      transform: translate(-50%, -50%);
+      background-color: #e7880c;
+      color: rgb(255, 255, 255);
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .rsvp-button:hover {
+      background-color: #00b377;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
 
     h1 {
       font-family: 'Great Vibes', cursive;
@@ -108,11 +128,9 @@
   <!-- Section 4 dengan Overlay RSVP -->
   <div class="section overlay-container">
     <img src="3d.png" alt="Najla RSVP Background">
-    <div class="overlay">
-      <h1>RSVP</h1>
-      <p>Konfirmasi kehadiran kamu sekarang juga!</p>
-      <a href="https://wa.me/6281234567890" target="_blank" class="rsvp-button">Konfirmasi via WhatsApp</a>
-    </div>
+    <button class="rsvp-button" onclick="window.location.href='https://wa.me/6281234567890?text=Hai%2C%20aku%20akan%20hadir%20ke%20ultah%20Najla!🎉'">
+      Konfirmasi Kehadiran
+    </button>
   </div>
 
 </body>
