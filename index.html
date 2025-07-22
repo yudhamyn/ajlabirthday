@@ -134,10 +134,26 @@
   </div>
 
     <!-- Musik Latar -->
-  <audio autoplay loop>
-    <source src="najlasong.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung elemen audio.
-  </audio>
+<audio id="bg-music" autoplay muted loop>
+  <source src="najlasong.mp3" type="audio/mpeg">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Saat pengguna pertama kali klik atau scroll, aktifkan audio
+    const music = document.getElementById('bg-music');
+    const enableAudio = () => {
+      music.muted = false;
+      music.play();
+      document.removeEventListener('click', enableAudio);
+      document.removeEventListener('scroll', enableAudio);
+    };
+    document.addEventListener('click', enableAudio);
+    document.addEventListener('scroll', enableAudio);
+  });
+</script>
+
 
 </body>
 </html>
